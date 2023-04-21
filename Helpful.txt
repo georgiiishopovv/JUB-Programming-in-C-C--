@@ -1,0 +1,129 @@
+pointers point to something => we change the original thing (important for classes and objects)
+when we have a pointer in a class - always create a dynamic array and copy the parameter into it
+When we use the usual way for operator overloading (as members, not as friends) do not use const in the parameter list
+
+A pointer basically contains a whole array, but it just has the address of its element
+Whatever is done to the pointer is done to the array, we can use the pointer to iterate through the array
+We use ptr[i] and *ptr to access the elements that are inside the different addresses
+
+We can use the = operator only for single ones aka a = b, but not for a = a+b;
+Class a = a+b;
+Class b;
+b = a;
+
+ptr = address
+foo(int *ptr)
+{
+    *ptr += 3;
+}
+foo(&x);
+
+C++
+foo(int &a)
+{
+    a += 3;
+}
+
+*ptr we dereference to change the value at the specific address
+&a => a++ we change the value at the specific address
+
+
+
+We can pass floats to arguments that require doubles scanf("%d") without getting an error, but it will be typecasted, so if we pass
+1.33232 only the one will be used;
+
+We cannot scanf for values that differentiate with the specified type
+scanf(%d, n) if n is a double it will give an error
+scanf(%lf, a) if a is an int it will give an error and so on
+
+arr_ptr = (int*) malloc(sizeof(int) * n)
+scanf("%d", &arr_ptr[i]); //put this inside this memory location
+scanf("%s", &arr_ptr);
+
+when printing or scanning for array we do not have to use index specifier
+
+int a[17];
+size_t n = sizeof(a) / sizeof(int);
+
+global variable is over all code
+
+p4.c:8:16: note: expected 'int *' but argument is of type 'char *'
+    8 | bool check(int arr[])
+      |            ~~~~^~~~~
+
+char array is a string, so we can use strlen to get its length
+we can use size_t n = sizeof(a) / sizeof(int); only when we know the max dimensions of the array
+char arr1[] = {'a', 'b', 'c', '1', '2', '3'};
+
+printf("%c", 5); //getting character at specified ascii code
+printf("%d", 'c'); //getting the ascii code of a character
+
+when using strings or char pointers in constructors or setters, always
+make them const
+-------------------
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    char str[100];
+    cout << "Enter a string: ";
+    cin.get(str, 100);
+
+    cout << "You entered: " << str << endl;
+    return 0;
+}
+
+-------------------
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    // Declaring a string object
+    string str;
+    cout << "Enter a string: ";
+    getline(cin, str);
+
+    cout << "You entered: " << str << endl;
+    return 0;
+}
+
+
+char arr[100];
+    char* name = arr;
+    cin >> name;
+    cout << name;
+}
+
+const char pointers only when directly initializing the string
+const char* ptr = "String";
+
+https://www.programiz.com/cpp-programming/strings
+
+
+ob = ob1 - ob2 give an error
+the = sign works only with single objects
+Object ob = ob1 - ob2;
+or 
+ob = ob1;
+
+
+friend functions for oveloading can be used only when the caller
+object is part of the class
+
+//getline(cin, arr); - reads even the newline but does not store it
+
+first inheritance in chain is virtual and all the rest is then virtual
+
+string is a const char*
+
+
+When sending a string DIRECTLY to a constructor or function the function or constructor
+should accept const char* STRING
+
+Cannot make pointers and arrays equal to strings
+Cannot strcpy strings into char* ptr or char ptr[];
+
+When catching a string exception, the catch parameter should be
+const char* 
